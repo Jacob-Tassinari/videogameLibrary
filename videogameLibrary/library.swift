@@ -8,31 +8,31 @@
 
 import Foundation
 
-class library {
+class library { // the orginal array of games
     var gameArray: [game] = [game(title: "Fortnite"), game(title: "Skyrim"), game(title: "sonic mania"), game(title: "We Happy Few")]
-    func printAllGames(){
+    func printAllGames(){ // to see all games
         for game in gameArray {
             print(game.title)
         }
     }
-    func addGame(){
+    func addGame(){ //add to the list
         print("please input the title of the game you want to add.")
         var newGame = readLine()
-        while newGame == nil || newGame == "" {
+        while newGame == nil || newGame == "" {// input vaildation
             print("please input the title of the game you want to add.")
             newGame = readLine()
         }
         let newGameTitle = game(title: newGame!)
         gameArray.append(newGameTitle)
     }
-    func checkedInGames(){
+    func checkedInGames(){ // show checked in game
         for game in gameArray {
             if game.checkedIn {
                 print(game.title)
             }
         }
     }
-    func checkedOutGames(){
+    func checkedOutGames(){ // show checked out games
         for game in gameArray {
             if game.checkedIn == false {
                 let dateFormatter = DateFormatter()
@@ -41,7 +41,7 @@ class library {
             }
         }
     }
-    func removeGames(){
+    func removeGames(){//remove form list
         for index in 0..<gameArray.count {
             print("\(index) = \(gameArray[index].title)")
         }
@@ -49,13 +49,13 @@ class library {
         var userInput = Int(readLine()!)
         let vaild = Array(0..<gameArray.count)
         
-        while userInput == nil || !vaild.contains(userInput!){
+        while userInput == nil || !vaild.contains(userInput!){// input vaildation
             print("please renter the number.")
             userInput = Int(readLine()!)
         }
         gameArray.remove(at: userInput!)
     }
-    func checkOu() {
+    func checkOu() { //to check out the game
         for index in 0..<gameArray.count {
             if gameArray[index].checkedIn == true {
                 print("\(index) = \(gameArray[index].title)")
@@ -64,19 +64,20 @@ class library {
         print("please input the number id of the game you want to check out.")
         var userInput = Int(readLine()!)
         let vaild = Array(0..<gameArray.count)
-        while userInput == nil || !vaild.contains(userInput!){
+        while userInput == nil || !vaild.contains(userInput!){// input vaildation
             print("please renter the number.")
             userInput = Int(readLine()!)
         }
-        gameArray[userInput!].checkedIn = false
+        gameArray[userInput!].checkedIn = false // changed to checked out
+        // start of dates
         let currentCalender = Calendar.current
         let duedate = currentCalender.date(byAdding: .day, value: 14, to: Date())
         gameArray[userInput!].dueDate = duedate
-        let dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter() // to state the date looking better
         dateFormatter.dateFormat = "MM/dd/yyyy"
         print("This game is due on: \(dateFormatter.string(from: duedate!))")
     }
-    func checkIn() {
+    func checkIn() {// chang it back to checked in
         for index in 0..<gameArray.count {
             if gameArray[index].checkedIn == false {
                 print("\(index) = \(gameArray[index].title)")
@@ -85,12 +86,12 @@ class library {
         print("please input the number id of the game you want to check in.")
         var userInput = Int(readLine()!)
         let vaild = Array(0..<gameArray.count)
-        while userInput == nil || !vaild.contains(userInput!){
+        while userInput == nil || !vaild.contains(userInput!){// input vaildation
             print("please renter the number.")
             userInput = Int(readLine()!)
         }
         gameArray[userInput!].checkedIn = true
-        gameArray[userInput!].dueDate = nil
+        gameArray[userInput!].dueDate = nil // take out the date
     }
     
 }

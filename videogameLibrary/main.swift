@@ -9,8 +9,8 @@
 import Foundation
 
 print("Welcome to the video game library.")
-let defaultMneu = menu()
-defaultMneu.go()
+let defaultMneu = menu()// instance of menu
+defaultMneu.go()// start 
 
 
 

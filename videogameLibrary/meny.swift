@@ -11,7 +11,7 @@ import Foundation
 var  shouldQuit = false
 var userInnput = 0
 class menu {
-    let lib = library()
+    let lib = library()// an instance of the class
     func go() {
         while !shouldQuit{
             printMenu()
@@ -28,13 +28,13 @@ class menu {
     }
     func getInput() -> String {
         var userInput = readLine()
-        while userInput == nil || userInput == "" {
+        while userInput == nil || userInput == "" {// input vaildation
             print("Please give a valid input")
             userInput = readLine()
         }
         return userInput!
     }
-    func  handleinput(_ input: String) {
+    func  handleinput(_ input: String) { // to get to the functions
         switch getInput() {
         case "1":
             print("add game(1)")
@@ -66,7 +66,7 @@ class menu {
             break
         }
     }
-    func vaildateInput(_ Input:String) -> Bool {
+    func vaildateInput(_ Input:String) -> Bool {// input vaildation
         let arrayCase = Array(1...9)
         guard let number  = Int(Input) else {
             return false
